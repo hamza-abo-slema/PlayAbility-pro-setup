@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>playAbility pro Benutzerhandbuch</title>
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --bg-panel: #1e1e1e;
+            --bg-hover: #2d2d2d;
+            --accent: #00aaff;
+            --accent-hover: #0088cc;
+            --text-main: #ffffff;
+            --text-muted: #aaaaaa;
+            --border-color: #333333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--bg-panel);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+
+        /* Tabs Navigation */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background-color: transparent;
+            color: var(--text-muted);
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-button:hover {
+            color: var(--text-main);
+            background-color: var(--bg-hover);
+        }
+
+        .tab-button[aria-selected="true"] {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .tab-button:focus-visible {
+            outline: 2px dashed var(--accent);
+            outline-offset: -2px;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            background-color: var(--bg-panel);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content Styling */
+        h2 {
+            color: var(--accent);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        h2:first-child {
+            margin-top: 0;
+        }
+
+        h3 {
+            color: #4db8ff;
+            margin-top: 30px;
+            border-left: 4px solid var(--accent);
+            padding-left: 12px;
+            background-color: rgba(0, 170, 255, 0.05);
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        h4 {
+            color: #ffffff;
+            margin-top: 20px;
+            font-size: 1.1rem;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 12px;
+        }
+
+        /* Keyboard Keys Styling */
+        kbd {
+            background-color: #333;
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            border: 1px solid #555;
+            box-shadow: 0 2px 0 #222;
+            display: inline-block;
+            margin: 0 2px;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--bg-hover);
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: rgba(0, 170, 255, 0.05);
+        }
+
+        .notice {
+            background-color: rgba(0, 170, 255, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .badge {
+            background-color: var(--accent);
+            color: #000;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
+        .farewell {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent);
+            padding: 15px;
+            border-top: 1px dashed var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header role="banner">
+        <h1>playAbility pro</h1>
+        <p>Der intelligente Player, schnelle Editor und Ihr audiovisueller Begleiter</p>
+    </header>
+
+    <main class="container">
+
+        <div class="tabs" role="tablist" aria-label="Handbuch-Abschnitte">
+            <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-overview" id="tab-overview" tabindex="-1">Übersicht</button>
+            <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-blind" id="tab-blind" tabindex="-1">Handbuch für blinde Benutzer</button>
+            <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-sighted" id="tab-sighted" tabindex="-1">Handbuch für sehende Benutzer</button>
+            <button class="tab-button" role="tab" aria-selected="true" aria-controls="panel-shortcuts" id="tab-shortcuts" tabindex="0">Umfassendes Tastenkombinationen-Handbuch</button>
+        </div>
+
+        <section id="panel-overview" class="tab-content" role="tabpanel" aria-labelledby="tab-overview" hidden>
+            <h2>Willkommen bei playAbility pro</h2>
+            <p>Wir haben <strong>playAbility pro</strong> so konzipiert, dass es mehr als nur ein herkömmlicher Mediaplayer ist. Es ist Ihre intelligente, blitzschnelle Umgebung für Wiedergabe und Bearbeitung – ein Mini-Studio, das alles bietet, was Sie brauchen, ohne Ihren Computer zu verlangsamen oder Sie abzulenken, und Ihnen die volle Kontrolle über jedes Detail Ihrer Medien gibt.</p>
+
+            <h3>Was macht diese Software einzigartig?</h3>
+            <ul>
+                <li><strong>Blitzschnelle Wiedergabe für alle Formate:</strong> Egal welche Audio- oder Videodatei Sie öffnen, die Software spielt sie sofort in der höchstmöglichen Qualität ab, ohne dass Sie zusätzliche Pakete oder komplizierte Codecs installieren müssen.</li>
+                <li><strong>Leistungsstarke Seitenleiste (Dateiverwaltung):</strong> Wenn Sie einen Ordner mit Tausenden von Audio- oder Videodateien haben, machen Sie sich keine Sorgen! Die Software zieht und organisiert sie in Sekundenschnelle in einer blitzschnellen Seitenleiste. Sie können in dieser Liste suchen, Ergebnisse filtern, durch Ihre Dateien navigieren und mit einem Klick benutzerdefinierte Wiedergabelisten erstellen – ganz ohne Verzögerungen oder langsames Laden.</li>
+                <li><strong>Sofortige Bearbeitung (Verlustfrei / Lossless):</strong> Stellen Sie sich vor, Sie könnten jeden Clip im Handumdrehen schneiden und exportieren! Die Software schneidet Dateien intelligent und behält dabei 100 % der Originalqualität bei. Das bedeutet, dass keine Zeit durch Rendern oder erneutes Verarbeiten verschwendet wird.</li>
+                <li><strong>YouTube direkt zur Hand:</strong> Keine Notwendigkeit, schwere Browser zu öffnen, die Ihren Arbeitsspeicher (RAM) belasten. Direkt aus der Software heraus können Sie auf YouTube suchen, Videos als Audio oder Video abspielen, sie in beliebiger Qualität herunterladen, Ihren Lieblingskanälen folgen und Abonnements lokal in der App verwalten!</li>
+                <li><strong>Integriertes Radio mit intelligenter Zeitplanung:</strong> Tausende arabische, internationale und Sportsender, MP3-Aufnahme, Favoriten und geplante Aufnahmen.</li>
+
+                <li><strong>KI-Untertitel:</strong> Transkribieren und übersetzen Sie Audio oder Video direkt in der App.</li>
+                <li><strong>Intelligentes Überspringen von Stille:</strong> Überspringt lange stille Abschnitte und exportiert eine bereinigte Kopie.</li>
+                <li><strong>100% Screenreader-Kompatibilität (Unterstützung für Blinde):</strong> Die Software wurde von Grund auf entwickelt, um Ihr Begleiter zu sein und Ihre Bedürfnisse zu verstehen. Jede Aktion, die Sie ausführen, wird sofort an Ihren Screenreader (wie NVDA) angesagt, was ein reibungsloses und völlig unabhängiges Erlebnis gewährleistet.</li>
+                <li><strong>Professionelle Audioeffekte:</strong> Um ein kinoreifes Hörerlebnis zu bieten oder den Ton nach Ihren Wünschen abzustimmen, haben wir einen fortschrittlichen Equalizer und Hall-Filter (Reverb Halls) hinzugefügt, die in Echtzeit angewendet werden, damit Sie die reinste und bestmögliche Klangqualität hören.</li>
+            </ul>
+
+            <div class="notice">
+                <strong>💡 Ablenkungsfreie Erfahrung (Einzelfenster):</strong> Die Software öffnet sich nur einmal! Wenn Sie eine neue Datei aus Windows öffnen, wird sie sofort an den aktuell laufenden Player gesendet, wodurch Ihr Desktop sauber und frei von mehreren ablenkenden Fenstern bleibt.
+            </div>
+        </section>
+
+        <section id="panel-blind" class="tab-content" role="tabpanel" aria-labelledby="tab-blind" hidden>
+            <h2>Handbuch für blinde Benutzer (100% barrierefreie Erfahrung)</h2>
+            <p>Willkommen in Ihrer sicheren Umgebung. Wir haben <strong>playAbility pro</strong> von Grund auf so entwickelt, dass es vollständig mit Screenreadern (insbesondere NVDA) kompatibel ist. Hier gibt es keine "unbeschrifteten Schalter". Wir haben die Benutzeroberfläche so programmiert, dass der Fokus von allen visuellen Elementen genommen wird, die Sie nicht betreffen, und machen die Tastatur zu Ihrem ultimativen Maestro. Jede Bewegung, jede Bearbeitung und jeder Schritt wird sofort und interaktiv angesagt.</p>
+
+            <h3>1. Grundlegende Wiedergabe und Navigation</h3>
+            <p>Sobald Sie in Windows bei einer Audio- oder Videodatei die Eingabetaste (Enter) drücken, öffnet sich die Software, sagt den Dateinamen an und startet die Wiedergabe sofort. Der Ordner, der die Datei enthält, wird automatisch im Hintergrund als Wiedergabeliste (Playlist) geladen.</p>
+            <ul>
+                <li><strong>Zwischen Dateien navigieren:</strong> Verwenden Sie <kbd>Bild ab</kbd> (Page Down) für die nächste Datei und <kbd>Bild auf</kbd> (Page Up) für die vorherige Datei. Für die erste oder letzte Datei verwenden Sie <kbd>Strg + Pos1</kbd> und <kbd>Strg + Ende</kbd>.</li>
+                <li><strong>Vorspulen und Zurückspulen:</strong> Pfeil nach rechts zum Vorspulen und Pfeil nach links zum Zurückspulen. Für längere Sprünge drücken Sie <kbd>Umschalt (Shift) + Pfeil rechts/links</kbd>.</li>
+                <li><strong>Schnelle Prozentnavigation:</strong> Verwenden Sie die Zahlen von <kbd>1</kbd> bis <kbd>9</kbd>, um in Prozenten zu springen (z. B. springt die Zahl 5 zu 50 % des Titels). Die Zahl <kbd>0</kbd> bringt Sie zum Anfang zurück.</li>
+            </ul>
+
+            <h3>2. Professionelle Audio- und Geschwindigkeitssteuerung</h3>
+            <p>Da Sie professionell mit Audio umgehen, haben wir flexible Steuerungen bereitgestellt, die über herkömmliche Grenzen hinausgehen:</p>
+            <ul>
+                <li><strong>Lauter / Leiser:</strong> Verwenden Sie die Pfeiltasten <kbd>Auf</kbd> und <kbd>Ab</kbd>. Wenn die Lautstärke der Datei jedoch zu niedrig ist, drücken Sie <kbd>Umschalt + Pfeil nach oben</kbd>, um den Ton stark zu verstärken (bis zu 200 %). Um die Lautstärke sofort wieder auf 25 % zurückzusetzen, drücken Sie <kbd>Umschalt + Leertaste</kbd>.</li>
+                <li><strong>Beschleunigen und Verlangsamen:</strong> Um Vorlesungen zu beschleunigen oder Clips zur genauen Überprüfung zu verlangsamen, drücken Sie <kbd>Strg + Pfeil nach rechts</kbd> (schneller) oder <kbd>Strg + Pfeil nach links</kbd> (langsamer). Die Software sagt die aktuelle Geschwindigkeit an (z. B. 1.25x). Um zur normalen Geschwindigkeit zurückzukehren, drücken Sie <kbd>Strg + Pfeil nach unten</kbd>.</li>
+            </ul>
+
+            <h3>3. Leistungsstarke Seitenleiste (Datei- und Playlist-Verwaltung)</h3>
+            <p>Hier liegt das Herzstück der Dateiverwaltung der Software. Wenn Ihr Ordner Tausende von Clips enthält, verschwenden Sie keine Zeit mit der Suche in Windows. Öffnen Sie die Seitenleiste durch Drücken von <kbd>Strg + L</kbd>.</p>
+
+            <h4>Erstens: Suchen und Durchsuchen</h4>
+            <ul>
+                <li>Beim Öffnen der Seitenleiste liegt Ihr Fokus automatisch auf einem Suchfeld. Beginnen Sie mit der Eingabe eines beliebigen Buchstabens des Dateinamens, und die Software filtert die Ergebnisse sofort in der darunter liegenden Liste.</li>
+                <li>Drücken Sie die <kbd>Pfeiltaste nach unten</kbd>, um in die Ergebnisliste zu wechseln. Navigieren Sie mit den Pfeilen, um die Dateinamen zu hören, und drücken Sie <kbd>Eingabe (Enter)</kbd>, um die gewünschte Datei abzuspielen.</li>
+            </ul>
+
+            <h4>Zweitens: Erstellen und Verwalten von Wiedergabelisten</h4>
+            <ul>
+                <li><strong>Eine Datei zu einer Liste hinzufügen:</strong> Fokussieren Sie sich auf eine beliebige Datei in der Seitenleiste und drücken Sie die <kbd>Anwendungstaste (Menütaste)</kbd>. Sie finden die Option "Zu einer benutzerdefinierten Wiedergabeliste hinzufügen". Hier können Sie eine bestehende Liste auswählen oder einen neuen Namen eingeben, um sie sofort zu erstellen.</li>
+                <li><strong>Benutzerdefinierte Wiedergabelisten durchsuchen:</strong> Von der Seitenleiste aus können Sie ganz einfach durch Ordner und Ihre erstellten Listen navigieren.</li>
+                <li><strong>Listen löschen und verwalten:</strong> Um eine alte Liste zu löschen, drücken Sie die <kbd>Anwendungstaste</kbd> innerhalb der Seitenleiste und wählen Sie "Benutzerdefinierte Wiedergabelisten verwalten". Ein Fenster mit all Ihren Listen öffnet sich; wählen Sie die gewünschte aus und drücken Sie "Löschen".</li>
+                <li>Um die Seitenleiste jederzeit zu verlassen und zum Player zurückzukehren, drücken Sie <kbd>Esc</kbd>.</li>
+            </ul>
+
+            <h3>4. Die Magie der Bearbeitung und des professionellen Schneidens (Verlustfrei)</h3>
+            <p>Die Software ermöglicht es Ihnen, Clips in Lichtgeschwindigkeit ohne Neukodierung (Lossless) zu schneiden, was bedeutet, dass die Qualität zu 100 % original bleibt.</p>
+
+            <h4>Erstens: Auswahl und Frame-für-Frame-Navigation</h4>
+            <ul>
+                <li>Wenn Sie den gewünschten Startpunkt erreicht haben, drücken Sie <kbd>[</kbd>, um den Startpunkt festzulegen. Es wird "Startpunkt ausgewählt" angesagt.</li>
+                <li>Gehen Sie zum Ende des abzuschneidenden Abschnitts und drücken Sie <kbd>]</kbd>, um den Endpunkt festzulegen. Es wird "Endpunkt ausgewählt" angesagt und der Abschnitt wird in einer Schleife (Loop) abgespielt. Um die Auswahl abzubrechen, drücken Sie <kbd>Esc</kbd>.</li>
+                <li><strong>Frame-für-Frame-Navigation:</strong> Für extrem präzises Schneiden (bis auf den Buchstaben oder das Wort genau), pausieren Sie den Clip und verwenden Sie <kbd>Alt + Pfeil nach rechts</kbd>, um ein Frame vorzurücken, oder <kbd>Alt + Pfeil nach links</kbd>, um ein Frame zurückzugehen, um genau zu hören, wo der Ton aufhört.</li>
+                <li><strong>Feinabstimmung der Schnittpunkte:</strong> Um die Auswahlpunkte präzise zu erweitern oder zu verengen, haben wir die Steuerung für jeden Punkt für mehr Flexibilität getrennt:
+                    <ul>
+                        <li><kbd>Strg + Umschalt + Pfeil rechts/links</kbd>: Steuert Punkt (A). Pfeil links erweitert ihn nach hinten, Pfeil rechts verengt ihn nach vorne.</li>
+                        <li><kbd>Alt + Umschalt + Pfeil rechts/links</kbd>: Steuert Punkt (B). Pfeil links verengt ihn nach hinten, Pfeil rechts erweitert ihn nach vorne.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>Zweitens: Speichern und die Sammel-Schnitt-Ablage (Cut Bin)</h4>
+            <ul>
+                <li><strong>Direktes Speichern:</strong> Drücken Sie <kbd>Alt + S</kbd>, und Sie werden nach einem Speicherort gefragt.</li>
+                <li><strong>Stapelbearbeitung:</strong> Wenn Sie eine Vorlesung transkribieren, drücken Sie <kbd>Alt + B</kbd>, um den Abschnitt zur Ablage (Bin) hinzuzufügen. Wiederholen Sie den Vorgang, um weitere Clips auszuwählen, und drücken Sie <kbd>Alt + B</kbd>.</li>
+                <li><strong>Ablage exportieren:</strong> Wenn Sie fertig sind, drücken Sie <kbd>Alt + S</kbd>. Ein Fenster öffnet sich, in dem Sie alle Clips in der Ablage auf einmal mit fortlaufender Nummerierung überprüfen und exportieren können.</li>
+                <li>Um die aktuelle Auswahl abzubrechen, drücken Sie <kbd>Esc</kbd>. Um die Ablage vollständig zu leeren, drücken Sie <kbd>Alt + Umschalt + C</kbd>.</li>
+            </ul>
+
+            <h3>5. Tontechnik und Effekte (Equalizer und Reverb)</h3>
+            <p>Um die Audioqualität zu testen, drücken Sie <kbd>Umschalt + F</kbd>, um das Effektfenster zu öffnen.</p>
+            <ul>
+                <li>Sie finden zwei Listen: Equalizer (EQ) und räumliche Simulation/Hall (Reverb Halls).</li>
+                <li>Navigieren Sie mit den Pfeilen, um einen Filter auszuwählen. Die Anwendung erfolgt <strong>sofort</strong>, und der Screenreader sagt den Namen des Filters an (z. B. Rock oder Großer Saal), damit Sie den Unterschied hören können.</li>
+                <li>Drücken Sie <kbd>Eingabe (Enter)</kbd>, um zu speichern.</li>
+            </ul>
+
+            <h3>6. Integriertes YouTube (Suche, Wiedergabe, Abonnements)</h3>
+            <p>Drücken Sie <kbd>Strg + Y</kbd>, um die integrierte YouTube-Oberfläche ohne komplexe Browser zu öffnen.</p>
+            <ul>
+                <li>Geben Sie Ihren Suchbegriff ein und drücken Sie die Eingabetaste. Durchsuchen Sie die Ergebnisse unten. Um ein Video abzuspielen, drücken Sie <kbd>Eingabe</kbd>.</li>
+                <li><strong>Erweiterte Optionen:</strong> Fokussieren Sie sich auf ein beliebiges Video und drücken Sie die <kbd>Anwendungstaste (Menütaste)</kbd>. Sie können:
+                    <ul>
+                        <li>Das Video in beliebiger Qualität herunterladen.</li>
+                        <li>Den Clip <strong>nur als Audio</strong> (höchste Qualität) herunterladen.</li>
+                        <li>Den Kanal abonnieren, um ihm lokal im Tab "Abonnements" zu folgen.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>7. Untertitel lesen und zusätzliche Werkzeuge</h3>
+            <ul>
+                <li><strong>Automatische Untertitel:</strong> Drücken Sie bei Filmen und Anime <kbd>Umschalt + R</kbd>, und der Screenreader liest die eingebetteten Untertitel Zeile für Zeile vor, sobald sie erscheinen. Drücken Sie <kbd>Umschalt + R</kbd> erneut, um den Vorgang zu stoppen.</li>
+                <li><strong>Online-Untertitelsuche:</strong> Sie können Untertitel für jeden Film oder jede Anime-Episode direkt abrufen. Drücken Sie <kbd>Strg + Alt + S</kbd>, um das Suchfenster zu öffnen (die Software füllt den Namen des aktuellen Videos automatisch aus, oder Sie können ihn selbst eingeben). Durchsuchen Sie die Ergebnisse mit den Pfeiltasten und drücken Sie dann <kbd>Eingabe</kbd> auf dem passenden Untertitel, um ihn herunterzuladen und abzuspielen. Die Datei wird im Ordner „Subtitles" neben dem Originalvideo gespeichert, und der Screenreader beginnt sofort mit dem Vorlesen.<br><em>Wichtiger Hinweis:</em> Wenn der Untertitel nach dem Herunterladen nicht automatisch vorgelesen wird, drücken Sie <kbd>Umschalt + R</kbd>, um das Vorlesen zu aktivieren. Wenn sich ein Fenster öffnet, in dem Sie aufgefordert werden, eine Untertiteldatei von Ihrem PC auszuwählen, bedeutet dies, dass die aus dem Internet heruntergeladene Datei beschädigt oder ungültig ist, und Sie sollten ein anderes Suchergebnis ausprobieren.</li>
+                <li><strong>Zeitabfrage:</strong> <kbd>Strg + Umschalt + T</kbd> sagt die verstrichene Zeit an, und <kbd>Strg + T</kbd> sagt die Gesamtdauer an.</li>
+                <li><strong>Screenshot (Bildschirmfoto):</strong> Wenn Sie ein Bild vom aktuellen Video aufnehmen müssen, um es einer sehenden Person zu senden, drücken Sie <kbd>Strg + S</kbd>, und ein qualitativ hochwertiges Bild des aktuellen Frames wird gespeichert.</li>
+            </ul>
+
+            <h3>8. Integriertes Radio (Sender, Favoriten, Aufnahme und Zeitplanung)</h3><p>Drücken Sie <kbd>Ctrl + R</kbd> für Radio, Sender, Favoriten, MP3-Aufnahme und geplante Aufnahmen.</p><h3>10. KI-Untertitel</h3><p>Drücken Sie <kbd>S</kbd>, um Medien zu transkribieren und zu übersetzen, Text zu speichern und das Ergebnis zu laden.</p><h3>11. Intelligentes Überspringen von Stille</h3><p>Nutzen Sie <kbd>/</kbd>, <kbd>Shift + /</kbd> und <kbd>Ctrl + Shift + .</kbd> zum Aktivieren, Einstellen und Exportieren ohne Stille.</p><h3>12. Umfassende Einstellungen und Anpassung</h3><p><kbd>Ctrl + P</kbd> enthält Sprache, Kürzel, Sprachausgaben, Medientasten, Wiedergabe, Backups, Audioeffekte, Untertitel-Vorlesen und Barrierefreiheit.</p><h3>13. Wichtige Zusatzfunktionen</h3><p>Verwalten Sie Spuren mit <kbd>Ctrl + Shift + A</kbd>, wechseln Sie Audio mit <kbd>Shift + A</kbd>, konvertieren Sie Formate, bearbeiten Sie Tags und nutzen Sie M3U.</p><div class="farewell">
+                🎉 Wir wünschen Ihnen eine angenehme und unterhaltsame Reise mit playAbility pro!
+            </div>
+        </section>
+
+        <section id="panel-sighted" class="tab-content" role="tabpanel" aria-labelledby="tab-sighted" hidden>
+            <h2>Handbuch für sehende Benutzer (Visuelle Erfahrung & Benutzeroberfläche)</h2>
+            <p>Willkommen in der Welt von playAbility pro! Wir haben die Benutzeroberfläche hier so gestaltet, dass sie ein visuelles Meisterwerk ist, das Eleganz (Flat Design) und absolute Praktikabilität vereint. Sobald Sie die Software öffnen, werden Sie das Fehlen komplexer Menüs und visueller Unordnung bemerken. Ein kinoreifer schwarzer Bildschirm, begleitet von <strong>leuchtend blauen</strong> Schaltflächen und einer Steuerleiste, die nahtlos mit jeder Mausbewegung interagieren.</p>
+
+            <h3>1. Kinoreife Benutzeroberfläche (Ablenkungsfrei)</h3>
+            <ul>
+                <li><strong>Intelligentes automatisches Ausblenden:</strong> Für ein reines Seherlebnis verschwinden die obere Leiste (mit dem Dateinamen) und die untere Leiste (Steuerleiste) automatisch, sobald Sie ein Video abspielen und die Maus für einige Sekunden loslassen, sodass 100 % des Bildschirms dem Video gewidmet sind.</li>
+                <li><strong>Sanftes Einblenden:</strong> Bewegen Sie die Maus leicht, und die Leisten erscheinen mit einer sehr sanften Animation wieder, damit Sie die Kontrolle zurückgewinnen können.</li>
+            </ul>
+
+            <h3>2. Maus-Magie (Präzise Wiedergabe-Verknüpfungen)</h3>
+            <ul>
+                <li><strong>Vergrößern / Verkleinern:</strong> <kbd>Doppelklick</kbd> irgendwo auf den Videobildschirm, um ihn im Vollbildmodus (Fullscreen) anzuzeigen, und erneuter Doppelklick, um zur normalen Größe zurückzukehren.</li>
+                <li><strong>Wiedergabe/Pause:</strong> Ein einzelner Linksklick irgendwo auf den Bildschirm pausiert das Video, und ein weiterer Klick setzt die Wiedergabe fort.</li>
+                <li><strong>Frame-für-Frame-Navigation (Für Animatoren und Cutter):</strong> Dies ist eine leistungsstarke Funktion.
+                    <ul>
+                        <li><kbd>Alt + Klick</kbd> (Linksklick mit Alt) in der <strong>rechten Hälfte</strong> des Bildschirms: Das Video rückt genau ein Frame vor.</li>
+                        <li><kbd>Alt + Klick</kbd> in der <strong>linken Hälfte</strong> des Bildschirms: Das Video geht genau ein Frame zurück.</li>
+                    </ul>
+                </li>
+                <li><strong>Erweiterte Mausnavigation:</strong>
+                    <ul>
+                        <li><strong>Standard Vor-/Zurückspulen und Springen:</strong> Klicken Sie auf die Vor-/Zurück-Schaltflächen, um sich um 2 Sekunden zu bewegen (⏩ / ⏪). Halten Sie die <kbd>Umschalt (Shift)</kbd>-Taste gedrückt, während Sie klicken, um einen weiten Sprung von 20 Sekunden zu machen (beide Werte können in den Einstellungen angepasst werden).</li>
+                        <li><strong>Erstes und Letztes im Ordner:</strong> Klicken Sie auf die Schaltflächen für den nächsten/vorherigen Clip (⏭ / ⏮), während Sie <kbd>Strg</kbd> gedrückt halten, um sofort zum letzten oder ersten Clip im Ordner zu springen.</li>
+                    </ul>
+                </li>
+                <li><strong>Freies Ziehen (Drag & Seek):</strong> Sie können den <strong>blauen Fortschrittsbalken</strong> anklicken und gedrückt halten und ihn nach links und rechts ziehen, um reibungslos im Video zu spulen.</li>
+            </ul>
+
+            <h3>3. Untere Steuerleiste und interaktive Bearbeitungswerkzeuge</h3>
+            <p>Die untere Steuerleiste ist Ihr Armaturenbrett, das entwickelt wurde, um Ihnen für alles, was passiert, präzises visuelles Feedback zu geben:</p>
+            <ul>
+                <li><strong>Variabler Lautstärkebalken (Volume Gradient):</strong>
+                    <ul>
+                        <li>Die Grundfarbe des Balkens ist grau. Wenn Sie die Lautstärke mit der Maus erhöhen, füllt er sich mit einem <strong>eleganten, leuchtend blauen Farbverlauf</strong> und erreicht im normalen Modus maximal 100 %.</li>
+                        <li><strong>Das visuelle Geheimnis (Verstärkte Lautstärke):</strong> Sie können <kbd>Umschalt (Shift)</kbd> gedrückt halten, während Sie den Lautstärkebalken ziehen, um ihn auf bis zu <strong>200 %</strong> zu erhöhen. Wenn Sie dies tun, ändert sich die Farbe des Lautstärkebalkens von Blau zu einem <strong>Warnrot</strong>, um Sie visuell darauf aufmerksam zu machen, dass Sie sich im extremen Verstärkungsmodus befinden.</li>
+                    </ul>
+                </li>
+                <li><strong>Intelligente Auswahltaste (Zwei Punkte-Symbol mit einem Pfeil dazwischen ↔️):</strong>
+                    <p>Diese Schaltfläche ist der Auswahl eines bestimmten Segments des Clips gewidmet und arbeitet mit einer intelligenten interaktiven Technik, die auf 3 aufeinanderfolgenden Klicks basiert:</p>
+                    <ul>
+                        <li><strong>Erster Klick (Schnittbeginn A):</strong> Beim ersten Klick leuchtet der linke Punkt auf der Schaltfläche auf, und ein <strong>deutlicher roter Punkt</strong> erscheint auf dem blauen Fortschrittsbalken, was den Beginn der Auswahl anzeigt.</li>
+                        <li><strong>Zweiter Klick (Schnittende B und Schleife):</strong> Wenn Sie erneut auf den gewünschten Endpunkt klicken, leuchtet der zweite Punkt auf der Schaltfläche auf, die gesamte Schaltfläche wird rot, und ein <strong>zweiter roter Punkt</strong> erscheint. In diesem Moment spielt die Software das zwischen den beiden roten Punkten eingegrenzte Segment sofort und kontinuierlich in einer Schleife (Loop) ab, damit Sie Ihre Auswahl in der Vorschau anzeigen können.</li>
+                        <li><strong>Dritter Klick (Auswahl aufheben):</strong> Wenn Sie zum dritten Mal klicken (oder <kbd>Esc</kbd> drücken), schaltet sich die Schaltfläche vollständig aus, die Auswahl wird komplett abgebrochen, die roten Punkte verschwinden, und das Video kehrt zur normalen Wiedergabe zurück.</li>
+                    </ul>
+                </li>
+                <li><strong>Scheren-Schaltfläche ✂️ (Sammel-Schnitt-Ablage):</strong>
+                    <ul>
+                        <li><strong>Normaler Klick:</strong> Speichert das zwischen den beiden roten Punkten eingegrenzte Segment als neue Datei in seiner Originalqualität.</li>
+                        <li><strong>Alt + Klick (Schnitt-Ablage):</strong> Wenn Sie <kbd>Alt</kbd> gedrückt halten, während Sie auf die Schere klicken, wird der ausgewählte Clip der "Schnitt-Ablage" (Cut Bin) hinzugefügt. Sie werden feststellen, dass über dem Scheren-Symbol ein <strong>kleines rotes Abzeichen (Badge)</strong> mit der Anzahl der Clips in der Ablage erscheint, die bereit sind, später zusammen exportiert zu werden.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>4. Leistungsstarke Seitenleisten-Verwaltung (Dateimanager)</h3>
+            <p>Klicken Sie auf die Schaltfläche "Liste" (oder <kbd>Strg + L</kbd>), um eine elegante Seitenleiste herauszuschieben. Diese Liste zeigt den aktuellen Ordner an und verwaltet Wiedergabelisten (Playlists):</p>
+            <ul>
+                <li><strong>Live-Suchfeld:</strong> Sobald Sie einen Buchstaben eingeben, wird die Liste unten in Echtzeit aktualisiert, um nur passende Ergebnisse anzuzeigen. Ein (X)-Knopf erscheint neben dem Feld, um die Suche mit einem Klick zu löschen.</li>
+                <li><strong>Benutzerdefinierte Wiedergabelisten erstellen und speichern:</strong> Klicken Sie mit der rechten Maustaste auf eine beliebige Datei in der Liste. Wählen Sie <strong>"Zu benutzerdefinierter Wiedergabeliste hinzufügen"</strong>. Die Software fordert Sie auf, einen Namen für die Liste einzugeben, um sie zu erstellen und die Datei hinzuzufügen.</li>
+                <li><strong>Listen verwalten und löschen:</strong> Klicken Sie mit der rechten Maustaste an eine leere Stelle oder auf eine beliebige Datei innerhalb der Seitenleiste und wählen Sie <strong>"Benutzerdefinierte Wiedergabelisten verwalten"</strong>. Ein übersichtliches Fenster öffnet sich, in dem alle Ihre Listen angezeigt werden, sodass Sie löschen können, was Sie nicht benötigen, mit einem einzigen Klick.</li>
+            </ul>
+
+            <h3>5. Zusätzliche Werkzeuge (YouTube, Effekte und Screenshots)</h3>
+            <ul>
+                <li><strong>Online-Untertitelsuche:</strong> Laden Sie Untertitel herunter, ohne die Software zu verlassen. Wählen Sie im oberen Menü (Ansicht -> Untertitel -> Untertitel online suchen) oder drücken Sie <kbd>Strg + Alt + S</kbd>. Ein Suchfenster wird angezeigt, das automatisch den Namen des Videos abruft. Wählen Sie den gewünschten Untertitel aus und klicken Sie auf <strong>"Untertitel herunterladen und abspielen"</strong>. Der Untertitel wird sofort auf dem Bildschirm angezeigt, und die Datei wird im Ordner „Subtitles" neben dem Originalvideo gespeichert.</li>
+                <li><strong>YouTube ohne Browser:</strong> Über die YouTube-Schaltfläche (oder <kbd>Strg + Y</kbd>) öffnet sich ein übersichtliches Fenster zum Suchen und Ansehen von YouTube. Sie können mit der rechten Maustaste auf ein beliebiges Video klicken, um ein Menü zum Herunterladen oder zum Abonnieren des Kanals anzuzeigen.</li>
+                <li><strong>Effektfenster (EQ):</strong> Über das Menü Extras -> Audioeffekte oder durch Drücken von <kbd>Umschalt + F</kbd> öffnet sich ein Fenster, um den Ton anzupassen (wie Rock oder Pop), und der Ton ändert sich sofort.</li>
+                <li><strong>Screenshot (Bildschirmfoto):</strong> Drücken Sie jederzeit <kbd>Strg + S</kbd>. Ein hochauflösendes Bild des aktuellen Frames wird aufgenommen und in Ihrem Ordner gespeichert.</li>
+            </ul>
+
+            <h3>6. Umfassende Einstellungen (Ctrl + P)</h3><p>Das Einstellungsfenster enthält Tastenkürzel, Sprache, Sprachausgaben, Medientasten, Wiedergabe, Backup/Wiederherstellung, Windows-Standard-App, Audioeffekte, Untertitel-Vorlesen und Barrierefreiheit.</p><h3>7. Zusätzliche Funktionen für sehende Benutzer</h3><p>Kontextmenüs, Drag-and-drop, saubere Vollbildansicht, visuelle Schnittmarken, Farben für Lautstärke-Boost, Screenshots, Konverter, Tag-Editor, Lesezeichen, Kapitel und Spurverwaltung sind über Oberfläche oder Menüs verfügbar.</p><div class="farewell">
+                🎉 Wir wünschen Ihnen eine angenehme und unterhaltsame Reise mit playAbility pro!
+            </div>
+        </section>
+
+        <section id="panel-shortcuts" class="tab-content active" role="tabpanel" aria-labelledby="tab-shortcuts">
+            <h2>Umfassendes Tastenkombinationen-Handbuch</h2>
+            <p>Dieser Abschnitt dient als Ihr umfassender Leitfaden zur Beherrschung der Software. <strong>playAbility pro</strong> verfügt über ein massives und flexibles Hotkey-System, das den Workflow von blinden und sehenden Benutzern unterstützt. Alle diese Tastenkombinationen sind über das Einstellungsfenster (<kbd>Strg + P</kbd> -> Tab Tastenkombinationen) vollständig anpassbar.</p>
+
+            <div class="notice">
+                💡 <strong>Für blinde und sehende Benutzer:</strong> Die Spalten mit der "Tastatur" bilden die zuverlässige und schnelle Grundlage für die vollständige Softwaresteuerung. Die Spalte "Maus" ist speziell für sehende Benutzer konzipiert, um eine schnelle visuelle Interaktion mit der Benutzeroberfläche und ihren Elementen zu erleichtern.
+            </div>
+
+            <h3><span class="badge">1</span> Grundlegende Wiedergabe und Navigation</h3>
+            <table>
+                <tr>
+                    <th style="width: 40%;">Funktion</th>
+                    <th style="width: 30%;">Tastatur</th>
+                    <th style="width: 30%;">Maus (Sehende)</th>
+                </tr>
+                <tr><td>Wiedergabe / Pause</td><td><kbd>Leertaste</kbd></td><td>Linksklick (auf Bildschirm)</td></tr>
+                <tr><td>Vollständig stoppen und zum Anfang zurückkehren</td><td><kbd>Eingabe (Enter)</kbd></td><td>-</td></tr>
+                <tr><td>Vorspulen (kurzer Sprung)</td><td><kbd>Pfeil rechts</kbd></td><td>Klick auf ⏩ oder auf Fortschrittsbalken nach rechts ziehen</td></tr>
+                <tr><td>Zurückspulen (kurzer Sprung)</td><td><kbd>Pfeil links</kbd></td><td>Klick auf ⏪ oder auf Fortschrittsbalken nach links ziehen</td></tr>
+                <tr><td>Vorspulen / Zurückspulen (weiter Sprung)</td><td><kbd>Umschalt + Pfeil rechts / links</kbd></td><td>Klick auf ⏩ / ⏪ mit <kbd>Umschalt (Shift)</kbd></td></tr>
+                <tr><td>Zum Anfang / Ende des Clips gehen</td><td><kbd>Pos1</kbd> / <kbd>Ende</kbd></td><td>-</td></tr>
+                <tr><td>Schnelle Prozentnavigation (10% bis 90%)</td><td>Zahlen <kbd>1</kbd> bis <kbd>9</kbd>. Und <kbd>0</kbd> für Anfang</td><td>-</td></tr>
+                <tr><td>Nächste / Vorherige Datei im Ordner abspielen</td><td><kbd>Bild ab</kbd> / <kbd>Bild auf</kbd></td><td>Klick auf ⏭ / ⏮</td></tr>
+                <tr><td>Zur ersten / letzten Datei im Ordner gehen</td><td><kbd>Strg + Pos1</kbd> / <kbd>Strg + Ende</kbd></td><td>Klick auf ⏭ / ⏮ mit <kbd>Strg</kbd></td></tr>
+                <tr><td>Schlaftimer (Automatisches Herunterfahren nach Dauer)</td><td><kbd>Alt + T</kbd></td><td>-</td></tr>
+            </table>
+
+            <h3><span class="badge">2</span> Professionelle Audio- und Geschwindigkeitssteuerung</h3>
+            <table>
+                <tr>
+                    <th style="width: 40%;">Funktion</th>
+                    <th style="width: 30%;">Tastatur</th>
+                    <th style="width: 30%;">Maus (Sehende)</th>
+                </tr>
+                <tr><td>Lauter / Leiser</td><td><kbd>Pfeil hoch</kbd> / <kbd>Pfeil runter</kbd></td><td>Klick oder Ziehen auf Lautstärkebalken</td></tr>
+                <tr><td>Lautstärke stark verstärken (bis zu 400%)</td><td><kbd>Umschalt + Pfeil hoch</kbd></td><td>Klick und Ziehen auf Lautstärkebalken mit <kbd>Umschalt</kbd></td></tr>
+                <tr><td>Lautstärke sofort auf 25% zurücksetzen</td><td><kbd>Umschalt + Leertaste</kbd></td><td>-</td></tr>
+                <tr><td>Stummschaltung / Stummschaltung aufheben</td><td><kbd>Alt + M</kbd></td><td>-</td></tr>
+                <tr><td>Clip beschleunigen / verlangsamen</td><td><kbd>Strg + Pfeil rechts</kbd> / <kbd>Strg + Pfeil links</kbd></td><td>-</td></tr>
+                <tr><td>Clip auf normale Geschwindigkeit 1x zurücksetzen</td><td><kbd>Strg + Pfeil nach unten</kbd></td><td>-</td></tr>
+            </table>
+
+            <h3><span class="badge">3</span> Bearbeitungswerkzeuge, präzise Auswahl und Schneiden ✂️</h3>
+            <table>
+                <tr>
+                    <th style="width: 40%;">Funktion</th>
+                    <th style="width: 30%;">Tastaturkombination</th>
+                    <th style="width: 30%;">Maus (Sehende)</th>
+                </tr>
+                <tr><td>Startpunkt festlegen (A)</td><td><kbd>[</kbd></td><td>Erster Klick auf Auswahltaste ↔️</td></tr>
+                <tr><td>Endpunkt festlegen (B)</td><td><kbd>]</kbd></td><td>Zweiter Klick auf Auswahltaste ↔️</td></tr>
+                <tr><td>Auswahl abbrechen und Schleife sofort stoppen</td><td><kbd>Esc</kbd></td><td>Dritter Klick auf Auswahltaste ↔️</td></tr>
+                <tr><td>Ausgewählten Teil exportieren und speichern</td><td><kbd>Alt + S</kbd></td><td>Normaler Klick auf Scheren-Symbol ✂️</td></tr>
+                <tr><td>Auswahl zur "Sammel-Schnitt-Ablage" hinzufügen</td><td><kbd>Alt + B</kbd></td><td><kbd>Alt</kbd> + Klick auf Scheren-Symbol ✂️</td></tr>
+                <tr><td>Schnittablage komplett leeren, um neu zu beginnen</td><td><kbd>Alt + Umschalt + C</kbd></td><td>-</td></tr>
+                <tr><td>Präzise Steuerung Startpunkt (A) - erweitern/verengen</td><td><kbd>Strg + Umschalt + Pfeil rechts/links</kbd></td><td>-</td></tr>
+                <tr><td>Präzise Steuerung Endpunkt (B) - verengen/erweitern</td><td><kbd>Alt + Umschalt + Pfeil rechts/links</kbd></td><td>-</td></tr>
+            </table>
+
+            <h3><span class="badge">4</span> Untertitel, Frames und intelligente Infos</h3>
+            <table>
+                <tr>
+                    <th style="width: 40%;">Funktion</th>
+                    <th style="width: 30%;">Tastatur</th>
+                    <th style="width: 30%;">Maus (Sehende)</th>
+                </tr>
+                <tr><td>Untertitel online suchen und herunterladen</td><td><kbd>Strg + Alt + S</kbd></td><td>Vom Menü: Ansicht -> Untertitel -> Untertitel online suchen</td></tr>
+                <tr><td>Untertitel-Vorlesen ein-/ausschalten</td><td><kbd>Umschalt + R</kbd></td><td>-</td></tr>
+                <tr><td>Externe Untertiteldatei hinzufügen</td><td><kbd>Strg + Umschalt + S</kbd></td><td>-</td></tr>
+                <tr><td>Verfügbare Untertitelsprachen durchsuchen</td><td><kbd>Umschalt + S</kbd></td><td>-</td></tr>
+                <tr><td>Aktuelle Untertiteldatei entfernen</td><td><kbd>Alt + Umschalt + S</kbd></td><td>-</td></tr>
+                <tr><td>Ein Frame vorrücken / zurückgehen</td><td><kbd>Alt + Pfeil rechts</kbd> / <kbd>Alt + Pfeil links</kbd></td><td><kbd>Alt</kbd> + Links/Rechtsklick auf Videobildschirm</td></tr>
+                <tr><td>Hochauflösendes Screenshot der aktuellen Szene</td><td><kbd>Strg + S</kbd></td><td>-</td></tr>
+                <tr><td>Gesamtdauer des Clips ansagen</td><td><kbd>Strg + T</kbd></td><td>-</td></tr>
+                <tr><td>Verstrichene (aktuelle) Zeit des Clips ansagen</td><td><kbd>Strg + Umschalt + T</kbd></td><td>-</td></tr>
+            </table>
+
+            <h3><span class="badge">5</span> Lesezeichen und Kapitel</h3>
+            <table>
+                <tr>
+                    <th style="width: 40%;">Funktion</th>
+                    <th style="width: 30%;">Tastaturkombination</th>
+                    <th style="width: 30%;">Maus (Sehende)</th>
+                </tr>
+                <tr><td>Lesezeichen an aktueller Position hinzufügen</td><td><kbd>Strg + M</kbd></td><td>-</td></tr>
+                <tr><td>Alle Lesezeichen für aktuelle Datei anzeigen</td><td><kbd>Strg + Umschalt + M</kbd></td><td>-</td></tr>
+                <tr><td>Zum nächsten Kapitel gehen</td><td><kbd>Alt + Bild ab</kbd></td><td>-</td></tr>
+                <tr><td>Zum vorherigen Kapitel gehen</td><td><kbd>Alt + Bild auf</kbd></td><td>-</td></tr>
+                <tr><td>Kapitelliste anzeigen</td><td><kbd>Strg + H</kbd></td><td>-</td></tr>
+                <tr><td>Kapitel aufteilen und als separate Dateien exportieren</td><td><kbd>Strg + Umschalt + C</kbd></td><td>-</td></tr>
+            </table>
+
+            <h3><span class="badge">6</span> Verwaltung von Wiedergabelisten und YouTube</h3>
+            <table>
+                <tr>
+                    <th style="width: 40%;">Funktion</th>
+                    <th style="width: 30%;">Tastaturkombination</th>
+                    <th style="width: 30%;">Maus (Sehende)</th>
+                </tr>
+                <tr><td>Neue benutzerdefinierte Wiedergabeliste erstellen</td><td><kbd>Alt + P</kbd></td><td>Rechtsklick auf Datei in der Seitenleiste</td></tr>
+                <tr><td>Benutzerdefinierte Wiedergabelisten verwalten (anzeigen/löschen)</td><td><kbd>Umschalt + M</kbd></td><td>Rechtsklick in der Seitenleiste</td></tr>
+                <tr><td>Aktuelle Wiedergabeliste löschen</td><td><kbd>Umschalt + Löschen</kbd></td><td>-</td></tr>
+                <tr><td>Wiedergabelisten nach oben/unten neu anordnen</td><td><kbd>Alt + Pfeil nach oben/unten</kbd></td><td>-</td></tr>
+                <tr><td>Zum Kanal des aktuellen YouTube-Videos gehen</td><td><kbd>Strg + G</kbd></td><td>-</td></tr>
+                <tr><td>YouTube-Video/Audio herunterladen</td><td><kbd>Strg + D</kbd></td><td>Rechtsklick auf Video im YouTube-Bereich</td></tr>
+            </table>
+
+            
+            <h3><span class="badge">7</span> Radio</h3>
+            <table><tr><th style="width: 40%;">Function</th><th style="width: 30%;">Keyboard</th><th style="width: 30%;">Mouse</th></tr><tr><td>Open / close Radio</td><td><kbd>Ctrl + R</kbd></td><td>Radio button</td></tr><tr><td>Record / stop radio</td><td><kbd>R</kbd></td><td>Record button</td></tr><tr><td>Radio scheduler</td><td><kbd>Ctrl + Shift + R</kbd></td><td>Add task</td></tr><tr><td>Play station/channel</td><td><kbd>Enter</kbd></td><td>Double click</td></tr><tr><td>Remove favorite</td><td><kbd>Delete</kbd></td><td>Remove button</td></tr></table>
+            <h3><span class="badge">8</span> KI-Untertitel und Stille überspringen</h3>
+            <table><tr><th style="width: 40%;">Function</th><th style="width: 30%;">Keyboard</th><th style="width: 30%;">Mouse</th></tr><tr><td>Open AI subtitles</td><td><kbd>S</kbd></td><td>View menu</td></tr><tr><td>Toggle silence skip</td><td><kbd>/</kbd></td><td>Tools menu</td></tr><tr><td>Silence skip settings</td><td><kbd>Shift + /</kbd></td><td>Tools menu</td></tr><tr><td>Export without silence</td><td><kbd>Ctrl + Shift + .</kbd></td><td>Tools menu</td></tr></table>
+<h3><span class="badge">9</span> Fenster- und Kontextmenüverwaltung</h3>
+            <table>
+                <tr>
+                    <th style="width: 40%;">Funktion</th>
+                    <th style="width: 30%;">Tastaturkombination</th>
+                    <th style="width: 30%;">Maus (Sehende)</th>
+                </tr>
+                <tr><td>Integrierte YouTube-Oberfläche öffnen / schließen</td><td><kbd>Strg + Y</kbd></td><td>YouTube-Schaltfläche in der Benutzeroberfläche</td></tr>
+                <tr><td>Seitenleiste (Dateimanager) öffnen / schließen</td><td><kbd>Strg + L</kbd></td><td>Listen-Schaltfläche in der Benutzeroberfläche</td></tr>
+                <tr><td>Erweiterte Optionen anzeigen (Kontextmenü)</td><td><kbd>Anwendungstaste (Menütaste)</kbd></td><td>Rechtsklick</td></tr>
+                <tr><td>Audioeffekte-Fenster (EQ und Reverb)</td><td><kbd>Umschalt + F</kbd></td><td>Menü: Extras -> Audioeffekte</td></tr>
+                <tr><td>Umfassendes Bedienfeld und Einstellungen öffnen</td><td><kbd>Strg + P</kbd></td><td>-</td></tr>
+                <tr><td>Vergrößern / Verkleinern zum Vollbildmodus (Fullscreen)</td><td><kbd>Alt + Eingabe</kbd></td><td>Doppelklick auf das Video</td></tr>
+            </table>
+        <h3><span class="badge">10</span> Globale Systemkürzel</h3><table><tr><th>Function</th><th>Shortcut</th></tr><tr><td>Media keys</td><td>Media Keys</td></tr><tr><td>Play / pause</td><td><kbd>Alt + Win + Space</kbd></td></tr><tr><td>Next / previous</td><td><kbd>Alt + Win + Page Down</kbd> (weiter) / <kbd>Alt + Win + Page Up</kbd> (zurück)</td></tr><tr><td>First / last</td><td><kbd>Alt + Win + Home/End</kbd></td></tr><tr><td>Seek</td><td><kbd>Alt + Win + Right/Left</kbd></td></tr><tr><td>Volume</td><td><kbd>Alt + Win + Up/Down</kbd></td></tr></table></section>
+
+    </main>
+
+    <script>
+        // Tab switching logic designed for Accessibility and visual ease
+        const tabs = document.querySelectorAll('.tab-button');
+        const panels = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetPanelId = tab.getAttribute('aria-controls');
+
+                // Deactivate all tabs and hide all panels
+                tabs.forEach(t => {
+                    t.setAttribute('aria-selected', 'false');
+                    t.setAttribute('tabindex', '-1');
+                });
+                panels.forEach(p => {
+                    p.classList.remove('active');
+                    p.setAttribute('hidden', 'true');
+                });
+
+                // Activate selected tab and show corresponding panel
+                tab.setAttribute('aria-selected', 'true');
+                tab.setAttribute('tabindex', '0');
+
+                const activePanel = document.getElementById(targetPanelId);
+                activePanel.classList.add('active');
+                activePanel.removeAttribute('hidden');
+            });
+
+            // Keyboard navigation for tabs (Arrow keys)
+            tab.addEventListener('keydown', (e) => {
+                let index = Array.from(tabs).indexOf(e.target);
+                let newIndex;
+
+                if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                    // LTR orientation logic
+                    if (e.key === 'ArrowRight') {
+                        newIndex = index + 1 >= tabs.length ? 0 : index + 1;
+                    } else if (e.key === 'ArrowLeft') {
+                        newIndex = index - 1 < 0 ? tabs.length - 1 : index - 1;
+                    }
+                    tabs[newIndex].focus();
+                    tabs[newIndex].click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

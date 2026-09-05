@@ -1,0 +1,28 @@
+﻿END USER LICENSE AGREEMENT (EULA) - playAbility Pro
+
+This agreement is between you and the developer of the playAbility Pro software, developer Hamza Abo Slema (referred to hereafter as "the Developer"). By using, downloading, or installing the software, you acknowledge that you have read, understood, and agree to be bound by all its terms. If you do not agree with any term, you must stop using the software and delete it immediately.
+
+1) Disclaimer on Use in Forbidden Activities (Essential Clause):
+- The Developer declares that this software is intended solely for lawful use, and he disclaims full responsibility, before God Almighty and then before the law, for any use of the software in activities that are forbidden by religion or criminalized by law.
+- Forbidden uses include, but are not limited to: downloading, playing, converting, translating, producing, or distributing any pornographic or obscene content, any content that encourages violence, terrorism, or hatred of others, any content that unlawfully violates the intellectual property rights of others, or any use that contributes to a crime.
+- The burden of verifying the lawfulness of any content processed through the software rests solely on the user, and the Developer bears no responsibility - religious, legal, or moral - arising from your use of the software in any of these forbidden matters.
+- By downloading or using the software, you acknowledge that you bear full responsibility for your use and that you will not use it in any of the above.
+
+2) Acceptable Use:
+- You are permitted to use the software free of charge for the lawful purposes for which it was made: media playback, conversion, and translation.
+- You are strictly prohibited from distributing, selling, modifying, decompiling, or reverse-engineering the software without prior written permission from the Developer.
+
+3) License Grant:
+This software is provided free of charge and on a non-exclusive basis, and you are authorized to use it personally or professionally for lawful purposes only.
+
+4) Intellectual Property:
+The software and all its intellectual property rights, including the code, design, and interface, are the exclusive property of the Developer, and no right in these is transferred to you under this agreement.
+
+5) Disclaimer of Warranty:
+The software is provided "AS IS" without any warranty, express or implied, including warranties of merchantability or fitness for a particular purpose, and the user uses it at their own risk.
+
+6) Limitation of Liability:
+The Developer shall not be liable for any direct, indirect, incidental, or consequential damages arising from the use of or inability to use the software, even if advised of the possibility of such damages.
+
+7) Governing Law:
+The interpretation of this agreement is subject to the laws in force in the Developer's country, and any dispute shall be settled amicably before resorting to courts.

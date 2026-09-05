@@ -1,0 +1,28 @@
+﻿ACCORD DE LICENCE D'UTILISATEUR FINAL (CLUF) - playAbility Pro
+
+Cet accord est conclu entre vous et le développeur du logiciel playAbility Pro, le développeur Hamza Abo Slema (ci-après dénommé « le Développeur »). En utilisant, téléchargeant ou installant le logiciel, vous reconnaissez avoir lu, compris et accepté d'être lié par tous ses termes. Si vous n'acceptez pas l'un de ces termes, vous devez cesser d'utiliser le logiciel et le supprimer immédiatement.
+
+1) Décharge relative à l'utilisation dans des activités interdites (clause essentielle) :
+- Le Développeur déclare que ce logiciel est destiné exclusivement à un usage licite, et décline toute responsabilité, devant Dieu Tout-Puissant puis devant la loi, pour toute utilisation du logiciel dans des activités interdites par la religion ou pénalement répréhensibles.
+- Les utilisations interdites comprennent, sans s'y limiter : le téléchargement, la lecture, la conversion, la traduction, la production ou la distribution de tout contenu pornographique ou obscène, de tout contenu incitant à la violence, au terrorisme ou à la haine envers autrui, de tout contenu portant atteinte de manière illicite aux droits de propriété intellectuelle d'autrui, ou toute utilisation contribuant à un délit.
+- La charge de vérifier le caractère licite de tout contenu traité via le logiciel incombe uniquement à l'utilisateur, et le Développeur ne peut être tenu responsable - religieusement, légalement ou moralement - de toute utilisation du logiciel dans l'une de ces activités interdites.
+- En téléchargeant ou en utilisant le logiciel, vous reconnaissez assumer l'entière responsabilité de votre utilisation et vous engagez à ne pas l'utiliser dans l'un des cas mentionnés ci-dessus.
+
+2) Utilisation autorisée :
+- Vous êtes autorisé à utiliser le logiciel gratuitement pour les finalités licites pour lesquelles il a été conçu : lecture de médias, conversion et traduction.
+- Il est strictement interdit de distribuer, vendre, modifier, décompiler ou désosser le logiciel sans l'autorisation écrite préalable du Développeur.
+
+3) Octroi de licence :
+Ce logiciel est fourni gratuitement et de manière non exclusive, et vous êtes autorisé à l'utiliser à titre personnel ou professionnel uniquement pour des finalités licites.
+
+4) Propriété intellectuelle :
+Le logiciel et tous ses droits de propriété intellectuelle, notamment le code, la conception et l'interface, sont la propriété exclusive du Développeur, et aucun de ces droits ne vous est transféré en vertu du présent accord.
+
+5) Exclusion de garantie :
+Le logiciel est fourni « en l'état » (AS IS), sans aucune garantie, expresse ou implicite, y compris les garanties de qualité marchande ou d'adéquation à un usage particulier, et l'utilisateur l'utilise à ses propres risques.
+
+6) Limitation de responsabilité :
+Le Développeur ne saurait être tenu responsable de tout dommage direct, indirect, accessoire ou consécutif découlant de l'utilisation ou de l'impossibilité d'utiliser le logiciel, même s'il a été informé de la possibilité de tels dommages.
+
+7) Droit applicable :
+L'interprétation du présent accord est soumise aux lois en vigueur dans le pays du Développeur, et tout litige sera réglé à l'amiable avant tout recours devant les tribunaux.

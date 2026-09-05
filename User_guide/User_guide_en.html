@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>playAbility pro User Guide</title>
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --bg-panel: #1e1e1e;
+            --bg-hover: #2d2d2d;
+            --accent: #00aaff;
+            --accent-hover: #0088cc;
+            --text-main: #ffffff;
+            --text-muted: #aaaaaa;
+            --border-color: #333333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--bg-panel);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+
+        /* Tabs Navigation */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background-color: transparent;
+            color: var(--text-muted);
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-button:hover {
+            color: var(--text-main);
+            background-color: var(--bg-hover);
+        }
+
+        .tab-button[aria-selected="true"] {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .tab-button:focus-visible {
+            outline: 2px dashed var(--accent);
+            outline-offset: -2px;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            background-color: var(--bg-panel);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content Styling */
+        h2 {
+            color: var(--accent);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        h2:first-child {
+            margin-top: 0;
+        }
+
+        h3 {
+            color: #4db8ff;
+            margin-top: 30px;
+            border-left: 4px solid var(--accent);
+            padding-left: 12px;
+            background-color: rgba(0, 170, 255, 0.05);
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        h4 {
+            color: #ffffff;
+            margin-top: 20px;
+            font-size: 1.1rem;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 12px;
+        }
+
+        /* Keyboard Keys Styling */
+        kbd {
+            background-color: #333;
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            border: 1px solid #555;
+            box-shadow: 0 2px 0 #222;
+            display: inline-block;
+            margin: 0 2px;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--bg-hover);
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: rgba(0, 170, 255, 0.05);
+        }
+
+        .notice {
+            background-color: rgba(0, 170, 255, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .badge {
+            background-color: var(--accent);
+            color: #000;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
+        .farewell {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent);
+            padding: 15px;
+            border-top: 1px dashed var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header role="banner">
+        <h1>playAbility pro</h1>
+        <p>The smart player, fast editor, and your audio-visual companion</p>
+    </header>
+
+    <main class="container">
+
+        <div class="tabs" role="tablist" aria-label="Guide Sections">
+            <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-overview" id="tab-overview" tabindex="-1">Overview</button>
+            <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-blind" id="tab-blind" tabindex="-1">Blind Users Guide</button>
+            <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-sighted" id="tab-sighted" tabindex="-1">Sighted Users Guide</button>
+            <button class="tab-button" role="tab" aria-selected="true" aria-controls="panel-shortcuts" id="tab-shortcuts" tabindex="0">Comprehensive Shortcuts Guide</button>
+        </div>
+
+        <section id="panel-overview" class="tab-content" role="tabpanel" aria-labelledby="tab-overview" hidden>
+            <h2>Welcome to playAbility pro</h2>
+            <p>We designed <strong>playAbility pro</strong> to be more than just a traditional media player. It's your smart, blazing-fast environment for playback and editing—a mini-studio that provides everything you need without slowing down your computer or causing distractions, giving you full control over every detail of your media.</p>
+
+            <h3>What makes this software unique?</h3>
+            <ul>
+                <li><strong>Blazing-Fast Playback for All Formats:</strong> Whatever audio or video file you open, the software will play it instantly at the highest possible quality, without the need to install any extra packages or complicated codecs.</li>
+                <li><strong>Supercharged Sidebar (File Management):</strong> If you have a folder with thousands of audio or video files, don't worry! The software pulls and organizes them in seconds into a blazing-fast sidebar. You can search within this list, filter results, navigate your files, and create custom playlists with a click of a button—without any lag or slow loading.</li>
+                <li><strong>Instant Editing (Lossless):</strong> Imagine being able to cut any clip and export it in the blink of an eye! The software intelligently cuts files while maintaining 100% of the original quality, meaning no time is wasted on rendering or reprocessing.</li>
+                <li><strong>YouTube at Your Fingertips:</strong> No need to open heavy browsers that consume your RAM. Right from within the software, you can search YouTube, play videos as audio or video, download them in any quality you prefer, follow your favorite channels, and manage subscriptions locally within the app!</li>
+                <li><strong>Built-in Radio with Smart Scheduling:</strong> Thousands of Arabic, international, and sports stations, live MP3 recording, favorites, and scheduled recordings.</li>
+                <li><strong>AI Subtitles:</strong> Transcribe and translate audio or video into subtitle text from inside the app.</li>
+                <li><strong>Smart Silence Skip:</strong> Skip long silent parts during playback and export a cleaned copy without silence.</li>
+                <li><strong>100% Screen Reader Compatibility (Blind Support):</strong> The software is built from the ground up to be your companion and understand your needs. Every action you take is instantly announced to your screen reader (like NVDA), ensuring a smooth and completely independent experience.</li>
+                <li><strong>Professional Audio Effects:</strong> To deliver a cinematic listening experience or fine-tune the audio to your liking, we added an advanced equalizer and Reverb Halls filters that apply in real-time, letting you hear the purest and best possible sound quality.</li>
+            </ul>
+
+            <div class="notice">
+                <strong>💡 Distraction-Free Experience (Single Window):</strong> The software opens only once! If you open any new file from Windows, it is instantly sent to the currently running player, keeping your desktop clean and free of multiple distracting windows.
+            </div>
+        </section>
+
+        <section id="panel-blind" class="tab-content" role="tabpanel" aria-labelledby="tab-blind" hidden>
+            <h2>Blind Users Guide (100% Inclusive Accessibility Experience)</h2>
+            <p>Welcome to your safe environment. We designed <strong>playAbility pro</strong> from scratch to be fully compatible with screen readers (especially NVDA). Here, there is no such thing as an "Unlabeled Button". We programmed the interface to remove Focus from any visual elements that don't concern you, making the keyboard your ultimate maestro. Every movement, edit, and step will be instantly and interactively announced.</p>
+
+            <h3>1. Basic Playback and Navigation</h3>
+            <p>As soon as you press Enter on any audio or video file in Windows, the software will open, announce the file name, and start playback immediately. The folder containing the file is automatically loaded in the background as a playlist.</p>
+            <ul>
+                <li><strong>Navigating files:</strong> Use <kbd>Page Down</kbd> for the next file, and <kbd>Page Up</kbd> for the previous file. For the first or last file, use <kbd>Ctrl + Home</kbd> and <kbd>Ctrl + End</kbd>.</li>
+                <li><strong>Fast Forward and Rewind:</strong> Right Arrow to forward, and Left Arrow to rewind. For longer jumps, press <kbd>Shift + Right/Left Arrow</kbd>.</li>
+                <li><strong>Quick Percentage Navigation:</strong> Use numbers from <kbd>1</kbd> to <kbd>9</kbd> to jump by percentages (e.g., number 5 jumps to 50% of the track). Number <kbd>0</kbd> returns you to the beginning.</li>
+            </ul>
+
+            <h3>2. Professional Audio and Speed Control</h3>
+            <p>Because you handle audio professionally, we provided flexible controls that go beyond standard limits:</p>
+            <ul>
+                <li><strong>Volume Up/Down:</strong> Use <kbd>Up</kbd> and <kbd>Down</kbd> arrows. However, if the file's volume is too low, press <kbd>Shift + Up Arrow</kbd> to heavily amplify the sound (up to 400%). To instantly reset the volume to 25%, press <kbd>Shift + Space</kbd>.</li>
+                <li><strong>Speed Up and Slow Down:</strong> To speed up lectures or slow down clips for precise reviewing, press <kbd>Ctrl + Right Arrow</kbd> (to speed up) or <kbd>Ctrl + Left Arrow</kbd> (to slow down). The software will announce the current speed (e.g., 1.25x). To return to normal speed, press <kbd>Ctrl + Down Arrow</kbd>.</li>
+            </ul>
+
+            <h3>3. Supercharged Sidebar (File and Playlist Management)</h3>
+            <p>This is the heart of the software's file management. If your folder contains thousands of clips, don't waste time searching through Windows. Open the sidebar by pressing <kbd>Ctrl + L</kbd>.</p>
+
+            <h4>First: Searching and Browsing</h4>
+            <ul>
+                <li>Upon opening the sidebar, your focus will automatically land on a search box. Start typing any letter of the file name, and the software will instantly filter the results in the list below.</li>
+                <li>Press <kbd>Down Arrow</kbd> to move into the results list. Navigate with the arrows to hear the file names, and press <kbd>Enter</kbd> to play the desired file.</li>
+            </ul>
+
+            <h4>Second: Creating and Managing Playlists</h4>
+            <ul>
+                <li><strong>Adding a file to a list:</strong> Focus on any file in the sidebar and press the <kbd>Application Key (Menu)</kbd>. You will find the option "Add to custom playlist". Here, you can select an existing list or type a new name to create one instantly.</li>
+                <li><strong>Browsing Custom Playlists:</strong> From within the sidebar, you can easily navigate through folders and your created lists.</li>
+                <li><strong>Deleting and Managing Lists:</strong> To delete an old list, press the <kbd>Application Key</kbd> inside the sidebar and select "Manage custom playlists". A window displaying all your lists will open; select the one you don't want and press "Delete".</li>
+                <li>To exit the sidebar at any time and return to the player, press <kbd>Escape</kbd>.</li>
+            </ul>
+
+            <h3>4. The Magic of Editing and Professional Cutting (Lossless)</h3>
+            <p>The software allows you to cut clips at lightning speed, without re-encoding (Lossless), meaning the quality remains 100% original.</p>
+
+            <h4>First: Selection and Frame-by-Frame Navigation</h4>
+            <ul>
+                <li>When you reach the desired starting point, press <kbd>[</kbd> to set the start point. It will announce "Start point selected".</li>
+                <li>Move to the end of the segment you want to cut, and press <kbd>]</kbd> to set the end point. It will announce "End point selected" and will start looping the segment. To cancel the selection, press <kbd>Escape</kbd>.</li>
+                <li><strong>Frame-by-Frame Navigation:</strong> For ultra-precise cutting (down to the letter or word), pause the clip and use <kbd>Alt + Right Arrow</kbd> to advance one frame, or <kbd>Alt + Left Arrow</kbd> to go back one frame to hear exactly where the audio stops.</li>
+                <li><strong>Fine-Tuning Cut Points:</strong> To expand or narrow the selection points precisely, we separated the control for each point for more flexibility:
+                    <ul>
+                        <li><kbd>Ctrl + Shift + Right/Left Arrow</kbd>: Controls Point (A). Left arrow expands it backward, right arrow narrows it forward.</li>
+                        <li><kbd>Alt + Shift + Right/Left Arrow</kbd>: Controls Point (B). Left arrow narrows it backward, right arrow expands it forward.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>Second: Saving and the Bulk Cut Bin</h4>
+            <ul>
+                <li><strong>Direct Save:</strong> Press <kbd>Alt + S</kbd>, and it will prompt you for a save location.</li>
+                <li><strong>Bulk Editing:</strong> If you are transcribing a lecture, press <kbd>Alt + B</kbd> to add the segment to the bin. Repeat the process to select other clips and press <kbd>Alt + B</kbd>.</li>
+                <li><strong>Exporting the Bin:</strong> When finished, press <kbd>Alt + S</kbd>. A window will open to review and export all clips in the bin at once with sequential numbering.</li>
+                <li>To cancel the current selection, press <kbd>Escape</kbd>. To completely empty the bin, press <kbd>Alt + Shift + B</kbd>.</li>
+            </ul>
+
+            <h3>5. Audio Engineering and Effects (EQ and Reverb)</h3>
+            <p>To test the audio quality, press <kbd>Shift + F</kbd> to open the effects window.</p>
+            <ul>
+                <li>You will find two lists: Equalizer (EQ) and Reverb/Spatial Simulation (Reverb Halls).</li>
+                <li>Navigate with arrows to select a filter. The application is <strong>instant</strong>, and the screen reader will announce the filter's name (e.g., Rock, or Large Hall) so you can hear the difference.</li>
+                <li>Press <kbd>Enter</kbd> to save.</li>
+            </ul>
+
+            <h3>6. Integrated YouTube (Search, Play, Subscriptions)</h3>
+            <p>Press <kbd>Ctrl + Y</kbd> to open the integrated YouTube interface without complex browsers.</p>
+            <ul>
+                <li>Type in the search box and press Enter. Browse the results below. To play a video, press <kbd>Enter</kbd>.</li>
+                <li><strong>Advanced Options:</strong> Focus on any video and press the <kbd>Application Key (Menu)</kbd>. You can:
+                    <ul>
+                        <li>Download the video in any quality.</li>
+                        <li>Download the clip as <strong>audio only</strong> (highest quality).</li>
+                        <li>Subscribe to the channel to follow it locally in the "Subscriptions" tab.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>7. Subtitle Reading and Extra Tools</h3>
+            <ul>
+                <li><strong>Auto-Subtitles:</strong> For movies and anime, press <kbd>Shift + R</kbd>, and the screen reader will read the embedded subtitles line by line as they appear. Press <kbd>Shift + R</kbd> again to stop.</li>
+                <li><strong>Online Subtitle Search:</strong> You can directly fetch subtitles for any movie or anime episode. Press <kbd>Ctrl + Alt + S</kbd> to open the search window (the software will auto-fill the current video's name, or you can type it yourself). Browse results with arrows, then press <kbd>Enter</kbd> on the appropriate subtitle to download and play it. The file will be saved in the "Subtitles" folder next to the original video, and the screen reader will start reading it instantly.<br><em>Important Note:</em> If the subtitle isn't read automatically after downloading, press <kbd>Shift + R</kbd> to activate reading. If a window opens asking you to select a subtitle file from your PC, it means the downloaded file from the internet is corrupted or invalid, and you should try another search result.</li>
+                <li><strong>Time Query:</strong> <kbd>Ctrl + Shift + T</kbd> announces the elapsed time, and <kbd>Ctrl + T</kbd> announces the total duration.</li>
+                <li><strong>Screenshot:</strong> If you need to capture a frame from the current video to send to a sighted person, press <kbd>Ctrl + S</kbd>, and a high-quality image of the current frame will be saved.</li>
+            </ul>
+
+            <h3>8. Built-in Radio (stations, favorites, recording, scheduling)</h3><p>Press <kbd>Ctrl + R</kbd> to open Radio. Browse Arabic, international, and sports stations, add favorites, record live MP3 audio, or schedule future recordings by day and time.</p><h3>9. AI Subtitles (transcribe and translate any video)</h3><p>Press <kbd>S</kbd> to transcribe and translate media, save text, and load the result into the player.</p><h3>10. Smart Silence Skip</h3><p>Press <kbd>/</kbd> to toggle silence skipping, <kbd>Shift + /</kbd> for settings, and <kbd>Ctrl + Shift + .</kbd> to export a copy without silence.</p><h3>11. Comprehensive Settings and Customization</h3><p>Press <kbd>Ctrl + P</kbd> to customize language, shortcuts, speech announcements, media keys, playback behavior, backups, audio effects, subtitle reading, and accessibility.</p><h3>12. Important Extra Features</h3><p>Manage tracks with <kbd>Ctrl + Shift + A</kbd>, cycle audio tracks with <kbd>Shift + A</kbd>, convert formats, edit tags, use bookmarks and chapters, and import/export M3U playlists.</p><div class="farewell">
+                🎉 We wish you a happy and enjoyable journey with playAbility pro!
+            </div>
+        </section>
+
+        <section id="panel-sighted" class="tab-content" role="tabpanel" aria-labelledby="tab-sighted" hidden>
+            <h2>Sighted Users Guide (Visual Experience & UI)</h2>
+            <p>Welcome to the world of playAbility pro! We designed the interface here to be a visual masterpiece combining elegance (Flat Design) and ultimate practicality. As soon as you open the software, you'll notice the absence of complex menus and visual clutter. A cinematic black screen, accompanied by <strong>vibrant blue</strong> buttons and a control bar that interact seamlessly with every mouse movement.</p>
+
+            <h3>1. Cinematic Interface (Distraction-Free)</h3>
+            <ul>
+                <li><strong>Smart Auto-Hide:</strong> For a pure viewing experience, once you play any video and let go of the mouse for a few seconds, the top bar (containing the file name) and the bottom bar (control bar) will automatically disappear, dedicating 100% of the screen to the video.</li>
+                <li><strong>Smooth Reveal:</strong> Move the mouse slightly, and the bars will reappear with a very smooth animation so you can regain control.</li>
+            </ul>
+
+            <h3>2. Mouse Magic (Precise Playback Shortcuts)</h3>
+            <ul>
+                <li><strong>Zoom In/Out:</strong> <kbd>Double Click</kbd> anywhere on the video screen to make it Fullscreen, and double click again to return to normal size.</li>
+                <li><strong>Play/Pause:</strong> A single Left Click anywhere on the screen pauses the video, and another click resumes playback.</li>
+                <li><strong>Frame-by-Frame Navigation (For Animators and Editors):</strong> This is a powerful feature.
+                    <ul>
+                        <li><kbd>Alt + Click</kbd> (Left click with Alt) on the <strong>right half</strong> of the screen: The video advances exactly one frame.</li>
+                        <li><kbd>Alt + Click</kbd> on the <strong>left half</strong> of the screen: The video goes back exactly one frame.</li>
+                    </ul>
+                </li>
+                <li><strong>Advanced Mouse Navigation:</strong>
+                    <ul>
+                        <li><strong>Standard Forward/Rewind and Jumping:</strong> Click the forward/rewind buttons to move by 2 seconds (⏩ / ⏪). Hold the <kbd>Shift</kbd> key while clicking to make a long jump of 20 seconds (both values can be customized in settings).</li>
+                        <li><strong>First and Last in Folder:</strong> Click the next/previous clip buttons (⏭ / ⏮) while holding <kbd>Ctrl</kbd> to jump instantly to the last or first clip in the folder.</li>
+                    </ul>
+                </li>
+                <li><strong>Drag & Seek:</strong> You can click and hold the <strong>blue progress bar</strong>, dragging left and right to smoothly seek through the video.</li>
+            </ul>
+
+            <h3>3. Bottom Control Bar and Interactive Editing Tools</h3>
+            <p>The bottom control bar is your dashboard, designed to give you precise visual feedback for everything happening:</p>
+            <ul>
+                <li><strong>Volume Gradient Bar:</strong>
+                    <ul>
+                        <li>The base bar color is gray. When you increase the volume with the mouse, it fills with an <strong>elegant, vibrant blue gradient</strong>, maxing out at 100% in normal mode.</li>
+                        <li><strong>The Visual Secret (Boosted Volume):</strong> You can hold <kbd>Shift</kbd> while dragging the volume bar to boost it up to <strong>400%</strong>. When you do this, the volume bar's color will change from blue to a <strong>warning red color</strong>, visually alerting you that you are in extreme amplification mode.</li>
+                    </ul>
+                </li>
+                <li><strong>Smart Selection Button (Two dots icon with an arrow between them ↔️):</strong>
+                    <p>This button is dedicated to selecting a specific segment of the clip, operating with a smart interactive technique based on 3 consecutive clicks:</p>
+                    <ul>
+                        <li><strong>First Click (Start Cut A):</strong> Upon the first click, the left dot on the button will light up, and a <strong>clear red dot</strong> will appear on the blue progress bar, indicating the start of the selection.</li>
+                        <li><strong>Second Click (End Cut B and Loop):</strong> Clicking it again at the desired end point will light up the second dot on the button, turning the entire button red, and a <strong>second red dot</strong> will appear. At this moment, the software will immediately and continuously loop the segment constrained between the two red dots so you can preview your selection.</li>
+                        <li><strong>Third Click (Cancel Selection):</strong> Clicking it for the third time (or pressing <kbd>Escape</kbd>) will turn off the button entirely, completely canceling the selection, making the red dots disappear, and returning the video to normal playback.</li>
+                    </ul>
+                </li>
+                <li><strong>Scissors Button ✂️ (Bulk Cut Bin):</strong>
+                    <ul>
+                        <li><strong>Normal Click:</strong> Saves the constrained segment between the two red dots as a new file in its original quality.</li>
+                        <li><strong>Alt + Click (Cut Bin):</strong> If you hold <kbd>Alt</kbd> while clicking the scissors, the selected clip will be added to the "Cut Bin". You will notice a <strong>small red badge</strong> appear above the scissors icon displaying the number of clips in the bin, ready to be exported together later.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>4. Supercharged Sidebar Management (File Manager)</h3>
+            <p>Click the List button (or <kbd>Ctrl + L</kbd>) to slide out an elegant sidebar. This list displays the current folder and manages playlists:</p>
+            <ul>
+                <li><strong>Live Search Box:</strong> As soon as you type any letter, the list below will update in real-time to show only matching results. An (X) button appears next to the box to clear the search with one click.</li>
+                <li><strong>Create and Save Custom Playlists:</strong> Right-Click on any file in the list. Choose <strong>"Add to custom playlist"</strong>. The software will ask you to type a name for the list to create it and add the file.</li>
+                <li><strong>Manage and Delete Playlists:</strong> Right-click in any empty space or on any file inside the sidebar and select <strong>"Manage custom playlists"</strong>. A clean window will open displaying all your lists so you can delete what you don't need with a single click.</li>
+            </ul>
+
+            <h3>5. Extra Tools (YouTube, Effects, and Screenshots)</h3>
+            <ul>
+                <li><strong>Online Subtitle Search:</strong> Download subtitles without leaving the software. From the top menu, choose (View -> Subtitles -> Search for subtitles online), or press <kbd>Ctrl + Alt + S</kbd>. A search window will appear, automatically pulling the video's name. Select the desired subtitle and click <strong>"Download and play subtitle"</strong>. The subtitle will instantly appear on the screen, and the file will be saved in the "Subtitles" folder next to the original video.</li>
+                <li><strong>YouTube Without a Browser:</strong> Via the YouTube button (or <kbd>Ctrl + Y</kbd>), a clean window will open to search and watch YouTube. You can right-click any video to reveal a menu to download it or subscribe to its channel.</li>
+                <li><strong>Effects Window (EQ):</strong> From the menu Tools -> Audio Effects, or by pressing <kbd>Shift + F</kbd>, a window opens to tweak the audio (like Rock or Pop), and the sound will change instantly.</li>
+                <li><strong>Screenshot:</strong> Press <kbd>Ctrl + S</kbd> at any time. A high-resolution image of the current frame will be captured and saved in your folder.</li>
+            </ul>
+
+            <h3>6. Comprehensive Settings (Ctrl + P)</h3><p>The settings window includes shortcuts, language, speech announcements, media keys, playback behavior, backup and restore, default Windows app registration, audio effects, subtitle reading, and accessibility options.</p><h3>7. Extra Features for Sighted Users</h3><p>Right-click menus, drag-and-drop playlist ordering, clean fullscreen mode, visual cut markers, boosted-volume colors, screenshots, converter, tag editor, bookmarks, chapters, and track management are available from the interface or menus.</p><div class="farewell">
+                🎉 We wish you a happy and enjoyable journey with playAbility pro!
+            </div>
+        </section>
+
+        <section id="panel-shortcuts" class="tab-content active" role="tabpanel" aria-labelledby="tab-shortcuts">
+            <h2>Comprehensive Shortcuts Guide</h2>
+            <p>This section is designed to be your comprehensive guide to mastering the software. <strong>playAbility pro</strong> features a massive and flexible hotkey system that supports the workflow of both blind and sighted users. All these shortcuts are fully customizable via the settings window (<kbd>Ctrl + P</kbd> -> Shortcuts Tab).</p>
+
+            <div class="notice">
+                💡 <strong>For Blind and Sighted Users:</strong> The columns containing "Keyboard" form the reliable and fast foundation for full software control. The "Mouse" column is specifically designed for sighted users to facilitate quick visual interaction with the interface and its elements.
+            </div>
+
+            <h3><span class="badge">1</span> Basic Playback and Navigation</h3>
+            <table>
+                <tr>
+                    <th style="width: 40%;">Function</th>
+                    <th style="width: 30%;">Keyboard</th>
+                    <th style="width: 30%;">Mouse (Sighted)</th>
+                </tr>
+                <tr><td>Play / Pause</td><td><kbd>Space</kbd></td><td>Left Click (on screen)</td></tr>
+                <tr><td>Stop completely and return to start</td><td><kbd>Enter</kbd></td><td>-</td></tr>
+                <tr><td>Fast Forward (short jump)</td><td><kbd>Right Arrow</kbd></td><td>Click ⏩ or drag right on progress bar</td></tr>
+                <tr><td>Rewind (short jump)</td><td><kbd>Left Arrow</kbd></td><td>Click ⏪ or drag left on progress bar</td></tr>
+                <tr><td>Fast Forward / Rewind (long jump)</td><td><kbd>Shift + Right / Left Arrow</kbd></td><td>Click ⏩ / ⏪ with <kbd>Shift</kbd></td></tr>
+                <tr><td>Go to beginning / end of clip</td><td><kbd>Home</kbd> / <kbd>End</kbd></td><td>-</td></tr>
+                <tr><td>Quick percentage navigation (10% to 90%)</td><td>Numbers <kbd>1</kbd> to <kbd>9</kbd>. And <kbd>0</kbd> for beginning</td><td>-</td></tr>
+                <tr><td>Play Next / Previous file in folder</td><td><kbd>Page Down</kbd> / <kbd>Page Up</kbd></td><td>Click ⏭ / ⏮ buttons</td></tr>
+                <tr><td>Go to first / last file in folder</td><td><kbd>Ctrl + Home</kbd> / <kbd>Ctrl + End</kbd></td><td>Click ⏭ / ⏮ buttons with <kbd>Ctrl</kbd></td></tr>
+                <tr><td>Sleep Timer (Auto-shutdown after duration)</td><td><kbd>Alt + T</kbd></td><td>-</td></tr>
+            </table>
+
+            <h3><span class="badge">2</span> Professional Audio and Speed Control</h3>
+            <table>
+                <tr>
+                    <th style="width: 40%;">Function</th>
+                    <th style="width: 30%;">Keyboard</th>
+                    <th style="width: 30%;">Mouse (Sighted)</th>
+                </tr>
+                <tr><td>Volume Up / Down</td><td><kbd>Up Arrow</kbd> / <kbd>Down Arrow</kbd></td><td>Click or drag volume bar</td></tr>
+                <tr><td>Heavily amplify volume (up to 400%)</td><td><kbd>Shift + Up Arrow</kbd></td><td>Click and drag volume bar with <kbd>Shift</kbd></td></tr>
+                <tr><td>Reset volume to 25% instantly</td><td><kbd>Shift + Space</kbd></td><td>-</td></tr>
+                <tr><td>Mute / Unmute audio</td><td><kbd>Alt + M</kbd></td><td>-</td></tr>
+                <tr><td>Speed Up / Slow Down clip</td><td><kbd>Ctrl + Right Arrow</kbd> / <kbd>Ctrl + Left Arrow</kbd></td><td>-</td></tr>
+                <tr><td>Return clip to normal speed 1x</td><td><kbd>Ctrl + Down Arrow</kbd></td><td>-</td></tr>
+            </table>
+
+            <h3><span class="badge">3</span> Editing Tools, Precise Selection, and Clip Cutting ✂️</h3>
+            <table>
+                <tr>
+                    <th style="width: 40%;">Function</th>
+                    <th style="width: 30%;">Shortcut (Keyboard)</th>
+                    <th style="width: 30%;">Mouse (Sighted)</th>
+                </tr>
+                <tr><td>Set start point (A)</td><td><kbd>[</kbd></td><td>First click on selection button ↔️</td></tr>
+                <tr><td>Set end point (B)</td><td><kbd>]</kbd></td><td>Second click on selection button ↔️</td></tr>
+                <tr><td>Cancel selection and stop looping instantly</td><td><kbd>Escape</kbd></td><td>Third click on selection button ↔️</td></tr>
+                <tr><td>Export and save selected part as separate file</td><td><kbd>Alt + S</kbd></td><td>Normal click on scissors icon ✂️</td></tr>
+                <tr><td>Add selection to "Bulk Cut Bin"</td><td><kbd>Alt + B</kbd></td><td><kbd>Alt</kbd> + click on scissors icon ✂️</td></tr>
+                <tr><td>Completely empty cut bin to start over</td><td><kbd>Alt + Shift + B</kbd></td><td>-</td></tr>
+                <tr><td>Precise control of Start Point (A) - expand/narrow</td><td><kbd>Ctrl + Shift + Right/Left Arrow</kbd></td><td>-</td></tr>
+                <tr><td>Precise control of End Point (B) - narrow/expand</td><td><kbd>Alt + Shift + Right/Left Arrow</kbd></td><td>-</td></tr>
+            </table>
+
+            <h3><span class="badge">4</span> Subtitles, Frames, and Smart Info</h3>
+            <table>
+                <tr>
+                    <th style="width: 40%;">Function</th>
+                    <th style="width: 30%;">Keyboard</th>
+                    <th style="width: 30%;">Mouse (Sighted)</th>
+                </tr>
+                <tr><td>Search for subtitles online and download</td><td><kbd>Ctrl + Alt + S</kbd></td><td>From Menu: View -> Subtitles -> Search for subtitles online</td></tr>
+                <tr><td>Toggle subtitle reading</td><td><kbd>Shift + R</kbd></td><td>-</td></tr>
+                <tr><td>Add external subtitle file</td><td><kbd>Ctrl + Shift + S</kbd></td><td>-</td></tr>
+                <tr><td>Cycle through available subtitle languages</td><td><kbd>Shift + S</kbd></td><td>-</td></tr>
+                <tr><td>Remove current subtitle file</td><td><kbd>Alt + Shift + S</kbd></td><td>-</td></tr>
+                <tr><td>Advance / Go back one frame</td><td><kbd>Alt + Right</kbd> / <kbd>Alt + Left</kbd></td><td><kbd>Alt</kbd> + Left/Right click on video screen</td></tr>
+                <tr><td>Capture high-resolution screenshot of current scene</td><td><kbd>Ctrl + S</kbd></td><td>-</td></tr>
+                <tr><td>Announce total duration of clip</td><td><kbd>Ctrl + T</kbd></td><td>-</td></tr>
+                <tr><td>Announce elapsed (current) time of clip</td><td><kbd>Ctrl + Shift + T</kbd></td><td>-</td></tr>
+            </table>
+<h3><span class="badge">5</span> Bookmarks and Chapters</h3>
+            <table>
+                <tr>
+                    <th style="width: 40%;">Function</th>
+                    <th style="width: 30%;">Shortcut (Keyboard)</th>
+                    <th style="width: 30%;">Mouse (Sighted)</th>
+                </tr>
+                <tr><td>Add bookmark at current position</td><td><kbd>Ctrl + M</kbd></td><td>-</td></tr>
+                <tr><td>Show all bookmarks for current file</td><td><kbd>Ctrl + Shift + M</kbd></td><td>-</td></tr>
+                <tr><td>Go to next chapter</td><td><kbd>Alt + Page Down</kbd></td><td>-</td></tr>
+                <tr><td>Go to previous chapter</td><td><kbd>Alt + Page Up</kbd></td><td>-</td></tr>
+                <tr><td>Show chapter list</td><td><kbd>Ctrl + H</kbd></td><td>-</td></tr>
+                <tr><td>Split and export chapters as separate files</td><td><kbd>Ctrl + Shift + C</kbd></td><td>-</td></tr>
+            </table>
+
+            <h3><span class="badge">6</span> Playlist and YouTube Management</h3>
+            <table>
+                <tr>
+                    <th style="width: 40%;">Function</th>
+                    <th style="width: 30%;">Shortcut (Keyboard)</th>
+                    <th style="width: 30%;">Mouse (Sighted)</th>
+                </tr>
+                <tr><td>Create new custom playlist</td><td><kbd>Alt + P</kbd></td><td>Right-click file in sidebar</td></tr>
+                <tr><td>Manage (view/delete) custom playlists</td><td><kbd>Shift + M</kbd></td><td>Right-click in sidebar</td></tr>
+                <tr><td>Delete current playlist</td><td><kbd>Shift + Delete</kbd></td><td>-</td></tr>
+                <tr><td>Reorder playlists up / down</td><td><kbd>Alt + Up/Down Arrow</kbd></td><td>-</td></tr>
+                <tr><td>Go to channel of current YouTube video</td><td><kbd>Ctrl + G</kbd></td><td>-</td></tr>
+                <tr><td>Download YouTube video / audio</td><td><kbd>Ctrl + D</kbd></td><td>Right-click video in YouTube panel</td></tr>
+            </table>
+
+            
+            <h3><span class="badge">7</span> Radio</h3>
+            <table><tr><th style="width: 40%;">Function</th><th style="width: 30%;">Keyboard</th><th style="width: 30%;">Mouse</th></tr><tr><td>Open / close Radio</td><td><kbd>Ctrl + R</kbd></td><td>Radio button</td></tr><tr><td>Record / stop radio</td><td><kbd>R</kbd></td><td>Record button</td></tr><tr><td>Radio scheduler</td><td><kbd>Ctrl + Shift + R</kbd></td><td>Add task</td></tr><tr><td>Play station/channel</td><td><kbd>Enter</kbd></td><td>Double click</td></tr><tr><td>Remove favorite</td><td><kbd>Delete</kbd></td><td>Remove button</td></tr></table>
+            <h3><span class="badge">8</span> AI Subtitles and Silence Skip</h3>
+            <table><tr><th style="width: 40%;">Function</th><th style="width: 30%;">Keyboard</th><th style="width: 30%;">Mouse</th></tr><tr><td>Open AI subtitles</td><td><kbd>S</kbd></td><td>View menu</td></tr><tr><td>Toggle silence skip</td><td><kbd>/</kbd></td><td>Tools menu</td></tr><tr><td>Silence skip settings</td><td><kbd>Shift + /</kbd></td><td>Tools menu</td></tr><tr><td>Export without silence</td><td><kbd>Ctrl + Shift + .</kbd></td><td>Tools menu</td></tr></table>
+<h3><span class="badge">9</span> Windows and Context Menus Management</h3>
+            <table>
+                <tr>
+                    <th style="width: 40%;">Function</th>
+                    <th style="width: 30%;">Shortcut (Keyboard)</th>
+                    <th style="width: 30%;">Mouse (Sighted)</th>
+                </tr>
+                <tr><td>Open / Close integrated YouTube interface</td><td><kbd>Ctrl + Y</kbd></td><td>YouTube button in UI</td></tr>
+                <tr><td>Open / Close sidebar (File Manager)</td><td><kbd>Ctrl + L</kbd></td><td>List button in UI</td></tr>
+                <tr><td>Show advanced options (Context Menu)</td><td><kbd>Application Key (Menu Key)</kbd></td><td>Right Click</td></tr>
+                <tr><td>Audio Effects window (EQ and Reverb)</td><td><kbd>Shift + F</kbd></td><td>From menu: Tools -> Audio Effects</td></tr>
+                <tr><td>Open comprehensive control panel and settings</td><td><kbd>Ctrl + P</kbd></td><td>-</td></tr>
+                <tr><td>Zoom In / Out to Fullscreen</td><td><kbd>Alt + Enter</kbd></td><td>Double Click on video</td></tr>
+            </table>
+        <h3><span class="badge">10</span> Global System Shortcuts</h3><table><tr><th>Function</th><th>Shortcut</th></tr><tr><td>Media keys</td><td>Media Keys</td></tr><tr><td>Play / pause</td><td><kbd>Alt + Win + Space</kbd></td></tr><tr><td>Next / previous</td><td><kbd>Alt + Win + Page Down</kbd> (next) / <kbd>Alt + Win + Page Up</kbd> (previous)</td></tr><tr><td>First / last</td><td><kbd>Alt + Win + Home/End</kbd></td></tr><tr><td>Seek</td><td><kbd>Alt + Win + Right/Left</kbd></td></tr><tr><td>Volume</td><td><kbd>Alt + Win + Up/Down</kbd></td></tr></table></section>
+
+    </main>
+
+    <script>
+        // Tab switching logic designed for Accessibility and visual ease
+        const tabs = document.querySelectorAll('.tab-button');
+        const panels = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetPanelId = tab.getAttribute('aria-controls');
+
+                // Deactivate all tabs and hide all panels
+                tabs.forEach(t => {
+                    t.setAttribute('aria-selected', 'false');
+                    t.setAttribute('tabindex', '-1');
+                });
+                panels.forEach(p => {
+                    p.classList.remove('active');
+                    p.setAttribute('hidden', 'true');
+                });
+
+                // Activate selected tab and show corresponding panel
+                tab.setAttribute('aria-selected', 'true');
+                tab.setAttribute('tabindex', '0');
+
+                const activePanel = document.getElementById(targetPanelId);
+                activePanel.classList.add('active');
+                activePanel.removeAttribute('hidden');
+            });
+
+            // Keyboard navigation for tabs (Arrow keys)
+            tab.addEventListener('keydown', (e) => {
+                let index = Array.from(tabs).indexOf(e.target);
+                let newIndex;
+
+                if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                    // LTR orientation logic
+                    if (e.key === 'ArrowRight') {
+                        newIndex = index + 1 >= tabs.length ? 0 : index + 1;
+                    } else if (e.key === 'ArrowLeft') {
+                        newIndex = index - 1 < 0 ? tabs.length - 1 : index - 1;
+                    }
+                    tabs[newIndex].focus();
+                    tabs[newIndex].click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
